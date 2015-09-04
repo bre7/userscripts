@@ -1083,10 +1083,12 @@ function cleanShowName(showNameFull){ //prepares the showname for being used in 
 	showName = showNameFull.replace(" (US)", "")
 	showName = showName.replace(" (UK)", "")
 	showName = showName.replace(/ \(\d{4}\)$/, "")
-	showName = showName.replace(/'/,"")
 	showName = showName.replace(/[^0-9a-zA-Z\.: ]+/gm, " ")
 	showName = showName.replace(/\s{1,100}/gm, "+")
 	showName = showName.replace(/\+$/g,"")
+    	showName = showName.replace(/:/g,"")
+    	showName = showName.replace(/'/g,"")
+    	showName = showName.replace(/\./g,"")
 	return showName
 }
 
