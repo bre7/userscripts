@@ -1,5 +1,5 @@
 // ==UserScript==
-// @version     	3.01.2
+// @version     	3.02
 // @name        	MyEpisodes Enhanced
 // @description 	Adds download links, a progress bar, season premiere alerts, better searching, and a whole lot of customization to MyEpisodes.com
 // @include     	*://*myepisodes.com/*
@@ -1118,7 +1118,6 @@ function ProgCacheBuilder(i){
 			var text = responseDetails.responseText;
 			var reg = new RegExp(seasonNumber + "x\\d{2}", 'gm')
 			var regMatch = text.match(reg)
-            console.log("matched: " + regMatch)
 			reg = /.....$/g
 			regMatch = reg.exec(regMatch)
 			reg = /..$/
