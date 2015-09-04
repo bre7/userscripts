@@ -1,7 +1,6 @@
 // ==UserScript==
-// @version     	3.01
+// @version     	3.01.2
 // @name        	MyEpisodes Enhanced
-// @namespace   	http://userscripts.org/scripts/show/110076
 // @description 	Adds download links, a progress bar, season premiere alerts, better searching, and a whole lot of customization to MyEpisodes.com
 // @include     	*://*myepisodes.com/*
 // @exclude     	*://*myepisodes.com/forum*
@@ -996,7 +995,8 @@ function addShowHeader(url){
 		},
 		onload: function(responseDetails) {
 			text = responseDetails.responseText
-			var reg = /padding.bottom.10.*?div>/gm
+            // var reg = /padding.bottom.10.*?div>/gm
+            var reg = /padding_bottom_10.*?<br>/gm
 			var imgMatch = text.match(reg);
 			if (imgMatch[0].match('src')){ //add the tvrage image (if there is one)
 				$('#tvRageShowHeader').append(imgMatch[0].replace(/.*<img(.*?)>/, '<span style="float:left"><img id="tvRageImage"$1></span>'))
@@ -1115,7 +1115,8 @@ function ProgCacheBuilder(i){
 		onload: function(responseDetails) {
 			var text = responseDetails.responseText;
 			var reg = new RegExp(seasonNumber + "x\\d{2}", 'gm')
-			var regMatch = text.match(reg);
+			var regMatch = text.match(reg)
+            console.log("matched: " + regMatch)
 			reg = /.....$/g
 			regMatch = reg.exec(regMatch)
 			reg = /..$/
